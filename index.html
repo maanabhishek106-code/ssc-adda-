@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SSC ADDA 4BY4 - Premium Coaching App</title>
+<style>
+  :root{
+    --red:#e8231a;
+    --dark-red:#7a0d08;
+    --black:#1a1a1a;
+    --bg-pink:#fdeeee;
+    --white:#ffffff;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:'Segoe UI', Arial, sans-serif;
+    background:var(--bg-pink);
+    color:var(--black);
+  }
+  .page{
+    max-width:1024px;
+    margin:0 auto;
+    background:linear-gradient(180deg,#fdeeee 0%, #fdeeee 70%, #ffffff 100%);
+    position:relative;
+    overflow:hidden;
+  }
+  .top-icon{
+    position:absolute;
+    top:40px;
+    right:40px;
+    width:90px;
+    height:90px;
+    background:var(--red);
+    border-radius:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:40px;
+  }
+  .header{
+    padding:60px 50px 0 50px;
+  }
+  .logo{
+    font-size:52px;
+    font-weight:900;
+    font-style:italic;
+    letter-spacing:1px;
+  }
+  .logo .ssc{color:var(--red);}
+  .logo .adda{color:var(--black); font-size:34px; margin-left:8px;}
+  .logo .badge{
+    background:var(--red);
+    color:var(--white);
+    padding:6px 16px;
+    border-radius:8px;
+    font-size:30px;
+    margin-left:10px;
+    display:inline-block;
+  }
+  .tagline{
+    margin-top:30px;
+    font-size:46px;
+    font-weight:900;
+    font-style:italic;
+    line-height:1.15;
+  }
+  .tagline .r{color:var(--red);}
+  .tagline .b{color:var(--black);}
+  .divider{
+    width:70px;
+    height:5px;
+    background:var(--red);
+    margin:20px 0;
+    border-radius:3px;
+  }
+  .hindi-line{
+    font-size:20px;
+    margin-bottom:6px;
+  }
+  .hindi-line b{color:var(--red);}
+
+  .app-badge{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    background:var(--red);
+    color:var(--white);
+    border-radius:16px;
+    padding:20px 30px;
+    max-width:430px;
+    margin-top:35px;
+  }
+  .app-badge .icon{font-size:40px;}
+  .app-badge .title{font-size:22px; font-weight:800;}
+  .app-badge .sub{font-size:14px; opacity:0.9;}
+
+  .features{
+    margin-top:40px;
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+  }
+  .feature{
+    display:flex;
+    align-items:center;
+    gap:18px;
+  }
+  .feature .ico{
+    min-width:44px;
+    height:44px;
+    background:var(--red);
+    border-radius:50%;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
+  }
+  .feature .txt .en{font-size:18px; font-weight:700;}
+  .feature .txt .hi{font-size:14px; color:#444;}
+
+  .phone-wrap{
+    position:absolute;
+    top:220px;
+    right:20px;
+    width:400px;
+  }
+  .phone{
+    background:#111;
+    border-radius:45px;
+    padding:14px;
+    box-shadow:0 30px 60px rgba(0,0,0,0.35);
+  }
+  .screen{
+    background:#fff;
+    border-radius:34px;
+    overflow:hidden;
+    font-size:11px;
+  }
+  .status-bar{
+    display:flex;
+    justify-content:space-between;
+    padding:10px 20px 4px;
+    font-size:12px;
+    font-weight:600;
+  }
+  .screen-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:8px 16px 12px;
+  }
+  .screen-logo{font-weight:900; font-style:italic; font-size:16px;}
+  .screen-logo span{color:var(--red);}
+  .welcome{
+    padding:0 16px 10px;
+    font-size:13px;
+  }
+  .welcome b{color:var(--red);}
+  .banner{
+    margin:0 16px 12px;
+    border-radius:14px;
+    overflow:hidden;
+    background:linear-gradient(135deg,#111 40%, #2a2a2a);
+    color:#fff;
+    padding:14px;
+    position:relative;
+  }
+  .banner .top{font-weight:900; font-size:14px; letter-spacing:0.5px;}
+  .banner .mts{color:#ff5252; font-size:22px; font-weight:900;}
+  .banner .army{font-size:18px; font-weight:900;}
+  .banner .year{font-size:14px; margin-top:4px;}
+  .banner .price{
+    display:inline-block;
+    background:var(--red);
+    padding:2px 8px;
+    border-radius:6px;
+    font-size:11px;
+    margin-top:8px;
+  }
+  .cat-title{
+    display:flex;
+    justify-content:space-between;
+    padding:6px 16px;
+    font-weight:700;
+    font-size:14px;
+  }
+  .cat-title span:last-child{color:var(--red); font-weight:600; font-size:12px;}
+  .cat-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+    padding:0 16px 14px;
+  }
+  .cat-item{
+    background:#f7f7f7;
+    border-radius:10px;
+    padding:10px 4px;
+    text-align:center;
+    font-size:10px;
+    font-weight:600;
+  }
+  .cat-item .em{font-size:20px; display:block; margin-bottom:4px;}
+  .nav-bar{
+    display:flex;
+    justify-content:space-around;
+    border-top:1px solid #eee;
+    padding:10px 0;
+    font-size:9px;
+    font-weight:600;
+    color:#555;
+  }
+  .nav-bar .home{color:var(--red);}
+
+  .download-wrap{
+    text-align:center;
+    padding:60px 50px 30px;
+  }
+  .download-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    background:var(--red);
+    color:#fff;
+    font-size:30px;
+    font-weight:900;
+    letter-spacing:1px;
+    padding:20px 60px;
+    border-radius:50px;
+    text-decoration:none;
+    box-shadow:0 15px 30px rgba(232,35,26,0.35);
+    transition:transform 0.15s ease;
+  }
+  .download-btn:hover{transform:translateY(-3px);}
+  .download-btn .circle{
+    background:#fff;
+    color:var(--red);
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
+  }
+
+  .footer{
+    background:var(--dark-red);
+    color:#fff;
+    padding:40px 30px 20px;
+  }
+  .footer-grid{
+    display:flex;
+    justify-content:space-around;
+    flex-wrap:wrap;
+    gap:20px;
+    text-align:center;
+    margin-bottom:25px;
+  }
+  .footer-grid .item .ico{font-size:26px; margin-bottom:8px;}
+  .footer-grid .item .lbl{font-size:15px;}
+  .trust-bar{
+    background:#fff;
+    color:var(--dark-red);
+    border-radius:40px;
+    padding:14px;
+    text-align:center;
+    font-weight:700;
+    max-width:500px;
+    margin:0 auto;
+  }
+  .stars{color:#ffb400; margin-left:8px;}
+
+  @media (max-width:800px){
+    .phone-wrap{position:static; width:280px; margin:30px auto 0;}
+    .header{padding:40px 24px 0;}
+    .top-icon{top:20px; right:20px; width:60px; height:60px; font-size:26px;}
+    .logo{font-size:36px;}
+    .logo .adda{font-size:24px;}
+    .logo .badge{font-size:20px; padding:4px 10px;}
+    .tagline{font-size:30px;}
+    .download-btn{font-size:22px; padding:16px 36px;}
+    .download-wrap{padding:40px 24px;}
+    .footer-grid{gap:16px;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="top-icon">🏰</div>
+
+  <div class="header">
+    <div class="logo">
+      <span class="ssc">SSC</span><span class="adda">ADDA</span><span class="badge">4BY4</span>
+    </div>
+
+    <div class="tagline">
+      <div class="r">Your Dream.</div>
+      <div class="b">Our Mission.</div>
+      <div class="r">Your Success!</div>
+    </div>
+    <div class="divider"></div>
+
+    <div class="hindi-line">सपनों को दें सही दिशा,</div>
+    <div class="hindi-line"><b>SSC ADDA 4BY4</b> के साथ!</div>
+
+    <div class="app-badge">
+      <div class="icon">🏰</div>
+      <div>
+        <div class="title">SSC ADDA 4BY4</div>
+        <div class="sub">Premium Coaching App</div>
+      </div>
+    </div>
+
+    <div class="features">
+      <div class="feature">
+        <div class="ico">▶</div>
+        <div class="txt">
+          <div class="en">Live &amp; Recorded Classes</div>
+          <div class="hi">हर टॉपिक की गहराई से तैयारी</div>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="ico">📄</div>
+        <div class="txt">
+          <div class="en">PDF Notes &amp; Study Material</div>
+          <div class="hi">बेहतरीन नोट्स, हमेशा आपके साथ</div>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="ico">📋</div>
+        <div class="txt">
+          <div class="en">Test Series &amp; Mock Tests</div>
+          <div class="hi">अपनी तैयारी को परखें और बेहतर बनाएं</div>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="ico">👥</div>
+        <div class="txt">
+          <div class="en">Doubt Support</div>
+          <div class="hi">हर Doubt का मिलेगा पक्का समाधान</div>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="ico">🏅</div>
+        <div class="txt">
+          <div class="en">Experienced Teachers</div>
+          <div class="hi">अनुभवी शिक्षकों से पढ़ें, करें बेहतर तैयारी</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="screen">
+        <div class="status-bar"><span>9:41</span><span>📶 📡 🔋</span></div>
+        <div class="screen-header">
+          <div class="screen-logo">SSC <span>ADDA 4BY4</span></div>
+          <div>🔔 👤</div>
+        </div>
+        <div class="welcome">👋 Welcome, <b>Sonu</b> 🎓</div>
+
+        <div class="banner">
+          <div class="top">DELHI POLICE</div>
+          <div class="mts">MTS</div>
+          <div class="army">ARMY BATCH</div>
+          <div class="year">2027</div>
+          <div class="price">₹799 → ₹639 (20% OFF)</div>
+        </div>
+
+        <div class="cat-title"><span>Categories</span><span>See All</span></div>
+        <div class="cat-grid">
+          <div class="cat-item"><span class="em">🎥</span>Live Classes</div>
+          <div class="cat-item"><span class="em">📘</span>Recorded Courses</div>
+          <div class="cat-item"><span class="em">📊</span>Test Series</div>
+          <div class="cat-item"><span class="em">📝</span>PDF Notes</div>
+          <div class="cat-item"><span class="em">🌐</span>Current Affairs</div>
+          <div class="cat-item"><span class="em">🎓</span>Free Classes</div>
+          <div class="cat-item"><span class="em">✅</span>Practice Sets</div>
+          <div class="cat-item"><span class="em">💬</span>Doubt Support</div>
+          <div class="cat-item"><span class="em">📚</span>E-Books</div>
+        </div>
+
+        <div class="nav-bar">
+          <div class="home">🏠 Home</div>
+          <div>📖 My Courses</div>
+          <div>🎥 Live</div>
+          <div>⬇ Downloads</div>
+          <div>❓ Help</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="download-wrap">
+    <a class="download-btn" href="https://github.com/maanabhishek106-code/sscadda/releases/download/v1.0/sscadda4by4.apk" download>
+      DOWNLOAD NOW <span class="circle">↓</span>
+    </a>
+  </div>
+
+  <div class="footer">
+    <div class="footer-grid">
+      <div class="item"><div class="ico">🎯</div><div class="lbl">सही रणनीति</div></div>
+      <div class="item"><div class="ico">📖</div><div class="lbl">बेहतरीन सामग्री</div></div>
+      <div class="item"><div class="ico">📈</div><div class="lbl">नियमित टेस्ट</div></div>
+      <div class="item"><div class="ico">🏆</div><div class="lbl">सफलता आपकी</div></div>
+    </div>
+    <div class="trust-bar">🛡 Trusted by Thousands of Aspirants <span class="stars">★★★★★</span></div>
+  </div>
+
+</div>
+</body>
+</html>
